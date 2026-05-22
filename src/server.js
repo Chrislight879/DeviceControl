@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middlewares
 app.use(cors());
@@ -16,7 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Rutas
+const authRoutes = require('./routes/auth');
 const deviceRoutes = require('./routes/devices');
+app.use('/api/auth', authRoutes);
 app.use('/api/devices', deviceRoutes);
 
 // Ruta principal

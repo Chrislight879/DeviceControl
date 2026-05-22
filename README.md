@@ -51,7 +51,19 @@ DeviceControl/
 
 ## API Endpoints
 
-Por definir según los requisitos del proyecto.
+### Autenticación
+
+- `POST /api/auth/login` — recibe `username` y `password`, devuelve `token` y `user`.
+- `GET /api/auth/me` — valida la sesión actual.
+- `POST /api/auth/logout` — cierra la sesión actual.
+
+### Panel protegido
+
+Todas las rutas bajo ` /api/devices` requieren autenticación con token Bearer.
+
+### Acceso al frontend
+
+La interfaz web solicita login antes de mostrar el panel administrativo. Usa un usuario existente de la tabla `usuarios`.
 
 ## Dependencias
 
